@@ -82,30 +82,27 @@ public class AnsjEvaluation extends Evaluation implements WordSegmenter{
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override
             public String seg(String text) {
-                StringBuilder result = new StringBuilder();
+                String result = null;
                 try{
-                    List<Term> terms = null;
                     switch(analysis){
                         case "BaseAnalysis":
-                                terms = BaseAnalysis.parse(text);
+                                result = BaseAnalysis.parse(text).toString();
                                 break;
                         case "ToAnalysis":
-                                terms = ToAnalysis.parse(text);
+                                result = ToAnalysis.parse(text).toString();
                                 break;
                         case "NlpAnalysis":
-                                terms = NlpAnalysis.parse(text);
+                                result = NlpAnalysis.parse(text).toString();
                                 break;
                         case "IndexAnalysis":
-                                terms = IndexAnalysis.parse(text);
+                                result = IndexAnalysis.parse(text).toString();
                                 break;
                     }
-                    for(Term term : terms){
-                        result.append(term.getName()).append(" ");                    
-                    }                    
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                return result.toString();
+                //return result.toString();
+                return result;
             }
         });
         // 对分词结果进行评估
