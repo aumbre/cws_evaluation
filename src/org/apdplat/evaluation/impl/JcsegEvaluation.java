@@ -59,7 +59,7 @@ public class JcsegEvaluation extends Evaluation implements WordSegmenter{
     private EvaluationResult run(final int segMode) throws Exception{
         // 对文本进行分词
         String type = JcsegTaskConfig.COMPLEX_MODE==segMode?"Jcseg 复杂模式":"Jcseg 简易模式";
-        String resultText = "temp/result-text-"+type+".txt";
+        String resultText = "temp/result-text-jcseg-"+type+".txt";
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override
             public String seg(String text) {

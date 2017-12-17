@@ -65,7 +65,7 @@ public class MMSeg4jEvaluation extends Evaluation implements WordSegmenter{
     }
     private EvaluationResult run(final Seg seg) throws Exception{
         // 对文本进行分词
-        String resultText = "temp/result-text-"+seg.getClass().getSimpleName()+".txt";
+        String resultText = "temp/result-text-mmseg4j-"+seg.getClass().getSimpleName()+".txt";
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override
             public String seg(String text) {

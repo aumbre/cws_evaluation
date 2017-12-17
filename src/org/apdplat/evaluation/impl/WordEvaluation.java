@@ -45,7 +45,7 @@ public class WordEvaluation extends Evaluation implements org.apdplat.evaluation
     }
     private EvaluationResult run(SegmentationAlgorithm segmentationAlgorithm) throws Exception{
         //对文本进行分词
-        String resultText = "temp/result-text-"+segmentationAlgorithm.name()+".txt";
+        String resultText = "temp/result-text-word-"+segmentationAlgorithm.name()+".txt";
         float rate = segFile(testText, resultText, text -> WordEvaluation.seg(text, segmentationAlgorithm));
         //对分词结果进行评估
         EvaluationResult evaluationResult = evaluate(resultText, standardText);

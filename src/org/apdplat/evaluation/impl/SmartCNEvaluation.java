@@ -46,7 +46,7 @@ public class SmartCNEvaluation extends Evaluation implements WordSegmenter{
     }
     private EvaluationResult run(String type) throws Exception{
         //对文本进行分词
-        String resultText = "temp/result-text-"+type+".txt";
+        String resultText = "temp/result-text-smartcn-"+type+".txt";
         float rate = segFile(testText, resultText, text -> SmartCNEvaluation.segText(text));
         //对分词结果进行评估
         EvaluationResult evaluationResult = evaluate(resultText, standardText);

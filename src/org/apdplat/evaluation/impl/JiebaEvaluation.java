@@ -53,7 +53,7 @@ public class JiebaEvaluation extends Evaluation implements WordSegmenter{
     }
     private EvaluationResult run(final SegMode segMode) throws Exception{
         // 对文本进行分词
-        String resultText = "temp/result-text-"+segMode+".txt";
+        String resultText = "temp/result-text-jieba-"+segMode+".txt";
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override
             public String seg(String text) {

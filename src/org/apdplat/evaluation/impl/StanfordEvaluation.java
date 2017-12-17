@@ -60,7 +60,7 @@ public class StanfordEvaluation extends Evaluation implements WordSegmenter{
     private EvaluationResult run(final String lang) throws Exception{
         // 对文本进行分词
         String type = "ctb".equals(lang) ? "Chinese Treebank segmentation" : "Beijing University segmentation";
-        String resultText = "temp/result-text-"+type+".txt";
+        String resultText = "temp/result-text-stanford-"+type+".txt";
         StanfordCoreNLP stanfordCoreNLP = "ctb".equals(lang) ? CTB : PKU;
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override

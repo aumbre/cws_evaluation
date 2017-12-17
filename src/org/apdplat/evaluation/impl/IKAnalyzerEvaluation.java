@@ -56,7 +56,7 @@ public class IKAnalyzerEvaluation extends Evaluation implements WordSegmenter{
             des = "智能切分";
         }
         // 对文本进行分词
-        String resultText = "temp/result-text-"+des+".txt";
+        String resultText = "temp/result-text-IK-"+des+".txt";
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override
             public String seg(String text) {

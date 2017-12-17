@@ -78,31 +78,34 @@ public class AnsjEvaluation extends Evaluation implements WordSegmenter{
                     analyzer += " 面向索引的分词";
                     break;
         }
-        String resultText = "temp/result-text-"+analysis+".txt";
+        String resultText = "temp/result-text-ansj-"+analysis+".txt";
         float rate = segFile(testText, resultText, new Segmenter(){
             @Override
             public String seg(String text) {
-                String result = null;
+                StringBuilder result = new StringBuilder();
                 try{
+                    List<Term> terms = null;
                     switch(analysis){
                         case "BaseAnalysis":
-                                result = BaseAnalysis.parse(text).toString();
+                                terms = BaseAnalysis.parse(text).getTerms();
                                 break;
                         case "ToAnalysis":
-                                result = ToAnalysis.parse(text).toString();
+                                terms = ToAnalysis.parse(text).getTerms();
                                 break;
                         case "NlpAnalysis":
-                                result = NlpAnalysis.parse(text).toString();
+                                terms = NlpAnalysis.parse(text).getTerms();
                                 break;
                         case "IndexAnalysis":
-                                result = IndexAnalysis.parse(text).toString();
+                                terms = IndexAnalysis.parse(text).getTerms();
                                 break;
                     }
+                    for(Term term : terms){
+                        result.append(term.getName()).append(" ");                    
+                    }                    
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                //return result.toString();
-                return result;
+                return result.toString();
             }
         });
         // 对分词结果进行评估
